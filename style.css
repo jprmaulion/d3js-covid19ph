@@ -1,0 +1,383 @@
+body {
+  margin: 3px;
+}
+
+#details {
+
+position: absolute;
+top: 440px;
+right: 340px;
+/*left: -200px;*/
+/*width: 50%;*/
+
+}
+
+.tooltip {
+  font-weight: bold;
+  padding: 0.5rem;
+  border: 1px solid silver;
+  color: #222;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px #a6a6a6;
+  opacity: 1;
+  position: absolute;
+  font-size: 1.1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+#details, #initial {
+  /*margin-top: 2rem;*/ /*crucial, so that the main plot won't move!*/
+} 
+
+table {
+  margin-bottom: 0;
+}
+td, th {
+  padding: 1px 9px;
+}
+td {
+  text-align: right;
+}
+
+.container {
+  width: 100%;
+
+}
+
+.row {
+  position: absolute;
+  left: -100px;
+  right: 190px;
+  top: 30px;
+
+}
+
+.footer {
+  border-top: 1px solid silver;
+  color: #888888;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  pos
+}
+
+#close-details {
+  color: #FA5858;
+  text-decoration: none;
+  font-size: 4rem;
+  text-align: right;
+  line-height: 4.5rem;
+
+}
+#close-details:hover {
+  color: red;
+}
+
+#map {
+  font-size: 0; /* to prevent margin at bottom of map container */
+  border: 1px solid silver;
+  background: #E6E6E6;
+  /*opacity: 1;*/
+  width: 75%; /* https://stackoverflow.com/questions/49278757/d3-map-not-centering-on-page */
+  
+/*  left:20px;
+  top:30px;  */
+  position: absolute;
+  left: -100px;
+  top: 100px;
+
+}
+
+#legend {
+  border: 1px solid silver;
+  border-top: 0;
+  width: 75%;
+  position: absolute;
+  left: -100px;
+  top: 320px;
+  /*margin: 100px;*/
+
+
+}
+
+.legend-key path {
+  display: none;
+}
+
+.legend-key text {
+  font-size: 1rem;
+}
+
+.legend-key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+
+/* Thanks to http://colorbrewer2.org/ */
+.YlGnBu .q0-9{fill:rgb(255,255,217)}
+.YlGnBu .q1-9{fill:rgb(237,248,177)}
+.YlGnBu .q2-9{fill:rgb(199,233,180)}
+.YlGnBu .q3-9{fill:rgb(127,205,187)}
+.YlGnBu .q4-9{fill:rgb(65,182,196)}
+.YlGnBu .q5-9{fill:rgb(29,145,192)}
+.YlGnBu .q6-9{fill:rgb(34,94,168)}
+.YlGnBu .q7-9{fill:rgb(37,52,148)}
+.YlGnBu .q8-9{fill:rgb(8,29,88)}
+
+g.features {
+  stroke: #d8d8d8;
+  stroke-width: 0.3; /*custom*/ 
+}
+g.features path:hover {
+  opacity: 0.5;
+  /*stroke-width: 0.2;*/
+}
+
+
+
+/**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**/
+
+
+/******************************************
+* Metric Modal Chart (Views, Downloads, Citations)
+********************************************/
+
+/* When there is no data ...*/
+
+#metric-modal {
+
+    position: absolute;
+    top: 330px;
+    left: -160px;
+}
+
+#metric-modal .metric-chart text {
+    fill: #565656;
+    font-size: 9px;
+    font-family: Helvetica, Arial, "sans serif";
+}
+
+#metric-modal .metric-chart text.no-data {
+    font-size: 16px;
+    font-weight: 100;
+    fill:#d0d0d0;
+}
+
+#metric-modal .metric-chart rect.no-data {
+    fill: #f5f5f5;
+}
+
+/* When there is data ...*/
+
+/* CB: padding to display better on bl.ocks.org */
+#metric-modal {
+    padding: 64px;
+}
+
+#metric-modal .metric-chart rect.plot-background{
+    fill: white;
+}
+
+/* complete data line */
+#metric-modal .metric-chart path.line {
+    fill: none;
+    stroke: #b9bec7; /* default, changed in each theme */
+    stroke-width: 1.5px;
+    clip-path: url(#clip);
+}
+
+/* complete data area */
+#metric-modal .metric-chart path.area {
+    fill: #b9bec7; /* CB default, changed in each theme */
+    opacity: 0.6;
+    clip-path: url(#clip);
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+}
+
+/*missing data line */
+#metric-modal .metric-chart path.line_missing {
+    fill: none;
+    stroke: #b9bec7; /* default, changed in each theme */
+    stroke-width: 1.5px;
+    /*stroke-dasharray: 1.5px 2px;*/
+    /*stroke-dasharray: 1.5px;*/
+    clip-path: url(#clip);
+}
+/*missing data area */
+#metric-modal .metric-chart path.area_missing {
+    fill: #b9bec7; /* CB default, changed in each theme */
+    opacity: 0.15;
+    clip-path: url(#clip);
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+}
+
+#metric-modal .metric-chart path.area_missing:active,
+#metric-modal .metric-chart path.area:active {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grabbing;
+}
+
+#metric-modal .metric-chart .axis {
+    shape-rendering: crispEdges;
+}
+
+#metric-modal .metric-chart .x.axis .domain{
+    display:none;
+}
+
+#metric-modal .metric-chart .x.axis line {
+    stroke: white;
+    opacity: 0.4;
+}
+
+#metric-modal .metric-chart .context .x.axis line {
+    display: none;
+}
+
+#metric-modal .metric-chart .y.axis .domain{
+    display: none;
+}
+
+#metric-modal .metric-chart .y.axis.title{
+    font-size: 13px;
+    font-weight: 100;
+}
+
+#metric-modal .metric-chart .y.axis line {
+    stroke: #565656;
+    stroke-dasharray: 2,2;
+    stroke-opacity: 0.3;
+}
+
+#metric-modal .metric-chart .brush .extent {
+  /*fill: #a7a8a7; /*#b9bec7;*/
+  fill-opacity: 0.03; /*.07; */
+  shape-rendering: crispEdges;
+  clip-path: url(#clip);
+}
+
+#metric-modal .metric-chart rect.pane {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    fill: white;
+    pointer-events: all;
+}
+
+#metric-modal .metric-chart rect.pane:active {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grabbing;
+}
+
+/* brush handles  */
+#metric-modal .metric-chart .resize .handle {
+    fill: #555;
+}
+
+#metric-modal .metric-chart .resize .handle-mini {
+    fill: white;
+    stroke-width: 1px;
+    stroke: #555;
+}
+
+#metric-modal .metric-chart .scale_button {
+    cursor: pointer;
+}
+
+#metric-modal .metric-chart .scale_button rect {
+    fill: #eaeaea;
+}
+#metric-modal .metric-chart .scale_button:hover text {
+    fill: #417DD6;
+    transition: all 0.1s cubic-bezier(.25,.8,.25,1);
+}
+
+#metric-modal .metric-chart text#displayDates  {
+    font-weight: bold;
+}
+
+/* circle style */
+#metric-modal .metric-chart .dot {
+    fill: #9db9c2; /*black; */
+    stroke: #9db9c2; /*#000; /* default, changed in each theme; ;#03befc; */ 
+    stroke-width: 1.5px;
+    clip-path: url(#clip);
+    cursor: default;
+    transition: stroke-width 0.06s ease-in;
+    transition: stroke 0.06s ease-in;
+}
+
+#metric-modal .metric-chart .dot:hover {
+    stroke: #9db9c2; /*#00997e; */
+    stroke-width: 6px;
+    transition: stroke-width 0.06s ease-out; /*0.06s ease-out;*/
+    transition: stroke 0.06s ease-out;
+}
+
+
+/*
+    --- BARS ---        [metric modal chart]
+*/
+
+
+#metric-modal .metric-chart .bar,
+#metric-modal .metric-chart .bar_context {
+    fill: #b9bec7; /* green: #00AA8D; )*/
+    stroke-width: 0;
+}
+
+#metric-modal .metric-chart .bar {
+    stroke: #b9bec7;
+    clip-path: url(#clip);
+    cursor: default;
+}
+
+/* --- context bars --- */
+
+
+div.tooltipP {
+    position: fixed;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    padding: 2px;
+    font: 10px sans-serif;
+    background: white;
+    color: #565656;
+    border: 0px;
+    border-radius: 2px;
+    pointer-events: none;
+    box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+}
+
+
+/*#selectButton {
+  width: 50%;
+}
+select {
+    display: block;
+}*/
+
+/*.selection {
+  width: 50%;
+}*/
+
+
+/**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**/

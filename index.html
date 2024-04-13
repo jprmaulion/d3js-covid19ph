@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>PH</title>
+
+    <!-- CSS libraries -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS styles -->
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+        
+
+
+    <div class="container">
+      <div class="row">
+        <h3 class="seven columns">PH COVID-19 IN DETAIL</h3>
+        <!-- Initialize a select button -->
+        <select id="selectButton"></select>
+        <select id="factorButton"></select>     
+
+      </div>
+      <div id="map"><!-- Map container --></div>
+      <div id="legend"><!-- Legend container --></div>
+
+      <div id="metric-modal"></div>
+
+      <div id="details" class="hidden row"><!-- Details container --></div>
+
+
+</div>
+
+    <!-- Mustache template, rendered later to show the details of a feature -->
+    <script id="template" type="x-tmpl-mustache">
+      <h5 class="six columns">{{ REGION }}</h5>
+      <table class="five columns">
+        <tr>
+          <th>XVALUE:</th>
+          <td>{{ XVALUE }}</td>
+        </tr>
+        <tr>
+          <th>YVALUE</th>
+          <td>{{ YVALUE }}</td>
+        </tr>
+      </table>
+      <a href="#" id="close-details" class="one column" onclick="hideDetails(); return false;">&#x274c;</a>
+    </script>
+
+      <style>
+        . indented-text {
+          padding-left: 100em;  /* Adjust the value (e.g., 1em, 3em) for desired indent */
+        }
+      </style>
+
+
+<!--       <div class="indented-text"> <div id="initial">
+        <h5>Instructions</h5>
+        <ul>
+
+          <li>Change the key using the dropdown above the map.</li>
+          <li>Hover over a region to display the details.</li>
+          <li>Note that a time series below will appear, displaying the COVID19 trends.</li>          
+          <li>Scroll in the map to zoom in and out.</li>
+          <li><b>Data as of: 2021 Feb 26</b> </li>          
+        </ul>
+      </div></div> -->
+
+
+    <!-- JS libraries -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+
+    <!-- Custom JS code -->
+    <script src="map.js"></script>
+  </body>
+</html>
