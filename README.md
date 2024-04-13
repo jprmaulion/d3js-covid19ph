@@ -35,5 +35,9 @@ The pane for the per-region COVID-19 trends (bottom part) appears once the user 
 The COVID-19 trends pane is made up of a combination of a bar graph and a line chart, which respectively represent the _actual_ and _7-day moving average_ COVID-19 cases per region. The user two options to view the pane: (1) zooming between the cases 2 weeks ago, for that month, or the entire dataset duration; or (2) using the sliding window below the pane.
 
 
+## 3. User workflow
+![](d3js_covid19ph_userWorkflow.gif)
+
+
 ## Questions?
 If you have questions about this visualization, feel free to shoot me an email at jprmaulion[at]gmail[dot]com. 🫶🏽
