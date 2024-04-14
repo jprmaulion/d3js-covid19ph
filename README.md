@@ -32,7 +32,7 @@ The pane for the current cases (top part) comprises a scrollable Philippine map 
 ## 2.3. COVID-19 trends pane
 The pane for the per-region COVID-19 trends (bottom part) appears once the user selects a region on the current case pane. 
 
-The COVID-19 trends pane is made up of a combination of a bar graph and a line chart, which respectively represent the _actual_ and _7-day moving average_ COVID-19 cases per region. The user two options to view the pane: (1) zooming between the cases 2 weeks ago, for that month, or the entire dataset duration; or (2) using the sliding window below the pane.
+The COVID-19 trends pane is a combination of a bar graph and a line chart, which respectively represent the _actual_ and _7-day moving average_ COVID-19 cases per region. The user has two options to view the pane: (1) zooming between the cases 2 weeks ago, for that month, or the entire dataset duration; or (2) using the sliding window below the pane.
 
 
 ## 3. User workflow
